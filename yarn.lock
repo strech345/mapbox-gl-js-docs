@@ -1085,10 +1085,10 @@
     "@mapbox/jsxtreme-markdown" "^0.9.3"
     babylon "^6.18.0"
 
-"@mapbox/batfish@1.10.2":
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/@mapbox/batfish/-/batfish-1.10.2.tgz#152643dc9fd226f0c277f27f3c717ac82d02c7ff"
-  integrity sha512-lo64cw3ZMZxGPnmBgom5/5ChyOdxntv2IMH2bpZGpj0ieqnMDYQpXwGwVTdJexpMU4H5d0MNBLOKG1Jp+ronrA==
+"@mapbox/batfish@1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/batfish/-/batfish-1.11.0.tgz#91577248c2f88f57322abf5ca7acc77083f76736"
+  integrity sha512-Yy+bonDhS9S3cEAudxM0Aw0IfERXqlxWEkqoPeJxopxJl8W8z6u59/wFHF9lKNFSxG8y+xQYM3SzGX7C2/+3Yg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@mapbox/babel-plugin-transform-jsxtreme-markdown" "^0.5.3"
