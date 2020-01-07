@@ -10,7 +10,6 @@
     // Join local JSON data with vector tile geometry
     // USA unemployment rate in 2009
     // Source https://data.bls.gov/timeseries/LNS14000000
-    var maxValue = 13;
     var data = [
         { 'STATE_ID': '01', 'unemployment': 13.17 },
         { 'STATE_ID': '02', 'unemployment': 9.5 },
@@ -64,25 +63,14 @@
         { 'STATE_ID': '56', 'unemployment': 7.59 }
     ];
 
-    map.on('load', function() {
+    
+    map.on('load', function () {
         // Add source for state polygons hosted on Mapbox, based on US Census Data:
         // https://www.census.gov/geo/maps-data/data/cbf/cbf_state.html
         map.addSource('states', {
             type: 'vector',
             url: 'mapbox://mapbox.us_census_states_2015'
         });
-
-        var expression = ['match', ['get', 'STATE_ID']];
-
-        // Calculate color for each state based on the unemployment rate
-        data.forEach(function(row) {
-            var green = (row['unemployment'] / maxValue) * 255;
-            var color = 'rgba(' + 0 + ', ' + green + ', ' + 0 + ', 1)';
-            expression.push(row['STATE_ID'], color);
-        });
-
-        // Last value is the default, used where there is no data
-        expression.push('rgba(0,0,0,0)');
 
         // Add layer from the vector tile source with data-driven style
         map.addLayer(
@@ -92,10 +80,50 @@
                 'source': 'states',
                 'source-layer': 'states',
                 'paint': {
-                    'fill-color': expression
+                    'fill-color': 
+                        ['case',
+                        ['!=', ['feature-state', 'unemployment'], null],
+                        [
+                            'interpolate', 
+                            ['linear'], 
+                            ['feature-state', 'unemployment'], 
+                            5, 'rgb(116,196,118)', 
+                            10, 'rgb(49,163,84)', 
+                            14, 'rgb(0,109,44)'], 
+                            'rgba(255, 255, 255, 0)'
+                        ],
+                    'fill-opacity': 0.5
                 }
             },
             'waterway-label'
         );
+
+        function setStates(e) {
+          data.forEach(function(row) {
+            map.setFeatureState({ 
+                source: 'states', 
+                sourceLayer: 'states', 
+                id: row.STATE_ID 
+            }, 
+            { 
+                unemployment: row.unemployment
+            });
+          });
+        }
+
+        // Check if source is loaded.
+        function setAfterLoad(e) {
+          if (e.sourceId === 'states' && e.isSourceLoaded) {
+            setStates();
+            map.off('sourcedata', setAfterLoad);
+          }
+        }
+
+        // If source is loaded, call `setStates()`.
+        if (map.isSourceLoaded('states')) {
+          setStates();
+        } else {
+          map.on('sourcedata', setAfterLoad);
+        }
     });
 </script>
