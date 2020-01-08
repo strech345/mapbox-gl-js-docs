@@ -9,7 +9,10 @@ import Icon from '@mapbox/mr-ui/icon';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
-    return `#${slugger.slug(namespace)}`;
+    const names = namespace.split('#');
+    const nv = names.map((v) => `#${slugger.slug(v)}`).join('');
+    console.log(`slugger transformed ${namespace} to ${nv}`);
+    return nv;
 });
 
 const formatters = createFormatters(linkerStack.link);
