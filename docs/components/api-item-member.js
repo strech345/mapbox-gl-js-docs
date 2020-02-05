@@ -11,7 +11,6 @@ const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
     const names = namespace.split('#');
     const nv = names.map((v) => `#${slugger.slug(v)}`).join('');
-    console.log(`slugger transformed ${namespace} to ${nv}`);
     return nv;
 });
 
