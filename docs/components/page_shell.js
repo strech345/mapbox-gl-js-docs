@@ -7,9 +7,9 @@ import ReactPageShell from '../../vendor/docs-page-shell/react-page-shell.js';
 import TopbarSticker from '@mapbox/dr-ui/topbar-sticker';
 import BackToTopButton from '@mapbox/dr-ui/back-to-top-button';
 import ProductMenu from '@mapbox/dr-ui/product-menu/product-menu';
-import PageLayout from '@mapbox/dr-ui/page-layout';
+import PageLayout from './temp/page-layout';
 import SectionedNavigation from '@mapbox/dr-ui/sectioned-navigation';
-import NavigationAccordion from '@mapbox/dr-ui/navigation-accordion';
+import NavigationAccordion from './temp/navigation-accordion';
 import examples from '@mapbox/batfish/data/examples'; // eslint-disable-line
 import GithubSlugger from 'github-slugger';
 import ApiNavigation from './api-navigation';
