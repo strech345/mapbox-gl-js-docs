@@ -8,7 +8,7 @@ import TopbarSticker from '@mapbox/dr-ui/topbar-sticker';
 import BackToTopButton from '@mapbox/dr-ui/back-to-top-button';
 import ProductMenu from '@mapbox/dr-ui/product-menu/product-menu';
 import PageLayout from './temp/page-layout';
-import SectionedNavigation from '@mapbox/dr-ui/sectioned-navigation';
+import SectionedNavigation from './temp/sectioned-navigation';
 import NavigationAccordion from './temp/navigation-accordion';
 import examples from '@mapbox/batfish/data/examples'; // eslint-disable-line
 import GithubSlugger from 'github-slugger';
@@ -117,7 +117,8 @@ class PageShell extends React.Component {
                 return {
                     title: data[topic],
                     url: `/mapbox-gl-js/examples/#${topic}`,
-                    items: subNavItems
+                    items: subNavItems,
+                    id: topic
                 };
             })
             .filter(topic => topic.items.length > 0);
