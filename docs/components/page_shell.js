@@ -74,6 +74,7 @@ class PageShell extends React.Component {
                     thirdLevelItems: subNavItem.subnav
                         ? subNavItem.subnav.map(subSubNavItem => ({
                               title: subSubNavItem.title,
+                              icon: subSubNavItem.icon || undefined,
                               path:
                                   subSubNavItem.path ||
                                   `${section.path}-${subNavItem.title}-${subSubNavItem.title}`
