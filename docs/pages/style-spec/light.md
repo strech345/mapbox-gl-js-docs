@@ -8,7 +8,7 @@ prependJs:
     - "import ref from '../../../mapbox-gl-js/src/style-spec/reference/latest';"
 ---
 
-A style's `light` property provides a global light source for that style. Since this property represents the light used to light extruded features, you will only see visible changes to your map style when modifying this property if you are using extrusions.
+A style's `light` property provides a global light source for that style. Since this property is the light used to light extruded features, you will only see visible changes to your map style when modifying this property if you are using extrusions.
 
 ```json
 "light": {{JSON.stringify(
