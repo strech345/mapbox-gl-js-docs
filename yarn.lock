@@ -1454,6 +1454,11 @@
     tabbable "^3.1.1"
     xtend "^4.0.0"
 
+"@mapbox/point-geometry@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
+  integrity sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI=
+
 "@mapbox/postcss-html-filter@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@mapbox/postcss-html-filter/-/postcss-html-filter-1.0.1.tgz#25d8bcdb20c226d3a3a1d2a3dfc3c4021242e663"
@@ -1517,6 +1522,11 @@
   dependencies:
     debounce "^1.0.2"
     xtend "^4.0.1"
+
+"@mapbox/unitbezier@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/unitbezier/-/unitbezier-0.0.0.tgz#15651bd553a67b8581fb398810c98ad86a34524e"
+  integrity sha1-FWUb1VOme4WB+zmIEMmK2Go0Uk4=
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
