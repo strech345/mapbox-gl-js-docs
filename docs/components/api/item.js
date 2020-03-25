@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import createFormatters from 'documentation/src/output/util/formatters';
 import LinkerStack from 'documentation/src/output/util/linker_stack';
 import GithubSlugger from 'github-slugger';
-
 import docs from '../api.json'; // eslint-disable-line
+
 import ApiItemMember from './item-member';
 import Heading from './heading';
 import Augments from './augments';
@@ -13,6 +13,7 @@ import Properties from './properties';
 import Returns from './returns';
 import Throws from './throws';
 import Examples from './examples';
+import Related from './related';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -129,11 +130,7 @@ class ApiItem extends React.Component {
                 )}
 
                 {!empty(section.examples) && (
-                    <Examples
-                        formatType={this.formatType}
-                        md={this.md}
-                        section={section}
-                    />
+                    <Examples md={this.md} section={section} />
                 )}
 
                 {membersList(section.members.static, 'Static Members')}
@@ -141,14 +138,7 @@ class ApiItem extends React.Component {
                 {membersList(section.members.events, 'Events')}
 
                 {!empty(section.sees) && (
-                    <div>
-                        <div className="py6 mt12 txt-m txt-bold">Related</div>
-                        <ul>
-                            {section.sees.map((see, i) => (
-                                <li key={i}>{this.md(see, true)}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <Related md={this.md} section={section} />
                 )}
             </section>
         );
