@@ -10,6 +10,7 @@ import IconText from '@mapbox/mr-ui/icon-text';
 import Parameters from './parameters';
 import Properties from './properties';
 import Returns from './returns';
+import Throws from './throws';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -183,17 +184,11 @@ class ApiItem extends React.Component {
                 )}
 
                 {!empty(section.throws) && (
-                    <div>
-                        <div className="py6 mt12 txt-m txt-bold">Throws</div>
-                        <ul>
-                            {section.throws.map((throws, i) => (
-                                <li key={i}>
-                                    {this.formatType(throws.type)}:{' '}
-                                    {this.md(throws.description, true)}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    <Throws
+                        formatType={this.formatType}
+                        md={this.md}
+                        section={section}
+                    />
                 )}
 
                 {!empty(section.examples) && (
