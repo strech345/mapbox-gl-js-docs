@@ -9,6 +9,7 @@ import ApiItemMember from './item-member';
 import IconText from '@mapbox/mr-ui/icon-text';
 import Parameters from './parameters';
 import Properties from './properties';
+import Returns from './returns';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -173,18 +174,13 @@ class ApiItem extends React.Component {
                     />
                 )}
 
-                {section.returns &&
-                    section.returns.map((ret, i) => (
-                        <div key={i}>
-                            <div className="py6 mt12 txt-m txt-bold">
-                                Returns
-                            </div>
-                            <code>{this.formatType(ret.type)}</code>
-                            {ret.description && (
-                                <span>: {this.md(ret.description, true)}</span>
-                            )}
-                        </div>
-                    ))}
+                {section.returns && (
+                    <Returns
+                        formatType={this.formatType}
+                        md={this.md}
+                        section={section}
+                    />
+                )}
 
                 {!empty(section.throws) && (
                     <div>

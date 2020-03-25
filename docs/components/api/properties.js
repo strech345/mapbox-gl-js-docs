@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class Parameters extends React.Component {
+export default class Properties extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
@@ -55,7 +55,7 @@ export default class Parameters extends React.Component {
     }
 }
 
-Parameters.propTypes = {
+Properties.propTypes = {
     section: PropTypes.shape({
         properties: PropTypes.array
     }).isRequired,
