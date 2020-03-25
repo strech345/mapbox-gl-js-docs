@@ -16,7 +16,7 @@ import docs from '../components/api.json'; // eslint-disable-line
 import GithubSlugger from 'github-slugger';
 import createFormatters from 'documentation/src/output/util/formatters';
 import LinkerStack from 'documentation/src/output/util/linker_stack';
-import ApiItem from '../components/api-item';
+import ApiItem from '../components/api/item';
 import DrUiNote from '@mapbox/dr-ui/note';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import GithubSlugger from 'github-slugger';
 import createFormatters from 'documentation/src/output/util/formatters';
 import LinkerStack from 'documentation/src/output/util/linker_stack';
-import docs from '../components/api.json'; // eslint-disable-line
-import ApiItem from '../components/api-item';
+import docs from '../api.json'; // eslint-disable-line
+import ApiItem from './item';
 import Icon from '@mapbox/mr-ui/icon';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
