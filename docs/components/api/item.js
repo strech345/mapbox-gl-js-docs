@@ -139,12 +139,6 @@ class ApiItem extends React.Component {
                         />
                     )}
 
-                {section.version && <div>Version: {section.version}</div>}
-                {section.license && <div>License: {section.license}</div>}
-                {section.author && <div>Author: {section.author}</div>}
-                {section.copyright && <div>Copyright: {section.copyright}</div>}
-                {section.since && <div>Since: {section.since}</div>}
-
                 {!empty(section.params) &&
                     (section.kind !== 'class' ||
                         !section.constructorComment ||
