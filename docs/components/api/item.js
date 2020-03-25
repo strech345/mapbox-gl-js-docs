@@ -7,8 +7,6 @@ import { highlightJavascript } from '../../components/prism_highlight.js';
 import docs from '../api.json'; // eslint-disable-line
 import ApiItemMember from './item-member';
 import IconText from '@mapbox/mr-ui/icon-text';
-import Feedback from '@mapbox/dr-ui/feedback';
-import constants from '../../constants';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -18,21 +16,6 @@ const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
 const formatters = createFormatters(linkerStack.link);
 
 class ApiItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: undefined
-        };
-    }
-
-    componentDidMount() {
-        MapboxPageShell.afterUserCheck(() => {
-            this.setState({
-                user: MapboxPageShell.getUser() || undefined
-            });
-        });
-    }
-
     md = (ast, inline) => {
         if (
             inline &&
@@ -372,17 +355,6 @@ class ApiItem extends React.Component {
                         </ul>
                     </div>
                 )}
-
-                <div className="mt18">
-                    <Feedback
-                        site="Mapbox GL JS"
-                        section={section.name}
-                        type={`section on ${section.name}`}
-                        location={this.props.location}
-                        user={this.state.user}
-                        webhook={constants.FORWARD_EVENT_WEBHOOK}
-                    />
-                </div>
             </section>
         );
     }
