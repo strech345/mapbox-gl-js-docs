@@ -5,7 +5,7 @@ export default class Throws extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">Throws</div>
                 <ul>
                     {section.throws.map((throws, i) => (
@@ -15,7 +15,7 @@ export default class Throws extends React.Component {
                         </li>
                     ))}
                 </ul>
-            </div>
+            </React.Fragment>
         );
     }
 }

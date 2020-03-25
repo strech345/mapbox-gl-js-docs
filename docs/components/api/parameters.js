@@ -5,12 +5,12 @@ export default class Parameters extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">Parameters</div>
-                <div>
+                <React.Fragment>
                     {section.params.map((param, i) => (
                         <div key={i} className="mb6">
-                            <div>
+                            <React.Fragment>
                                 <span className="txt-code bg-transparent ml-neg3 txt-bold">
                                     {param.name}
                                 </span>
@@ -25,7 +25,7 @@ export default class Parameters extends React.Component {
                                     </span>
                                 )}
                                 {md(param.description, true)}
-                            </div>
+                            </React.Fragment>
                             {param.properties && (
                                 <div className="mt6 mb12 scroll-auto">
                                     <table className="fixed-table">
@@ -96,8 +96,8 @@ export default class Parameters extends React.Component {
                             )}
                         </div>
                     ))}
-                </div>
-            </div>
+                </React.Fragment>
+            </React.Fragment>
         );
     }
 }

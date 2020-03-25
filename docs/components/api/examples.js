@@ -6,7 +6,7 @@ export default class Examples extends React.Component {
     render() {
         const { section, md } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">Example</div>
                 {section.examples.map((example, i) => (
                     <div key={i}>
@@ -14,7 +14,7 @@ export default class Examples extends React.Component {
                         {highlightJavascript(example.description)}
                     </div>
                 ))}
-            </div>
+            </React.Fragment>
         );
     }
 }

@@ -5,14 +5,14 @@ export default class Related extends React.Component {
     render() {
         const { section, md } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">Related</div>
                 <ul>
                     {section.sees.map((see, i) => (
                         <li key={i}>{md(see, true)}</li>
                     ))}
                 </ul>
-            </div>
+            </React.Fragment>
         );
     }
 }

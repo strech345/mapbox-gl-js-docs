@@ -5,9 +5,9 @@ export default class Properties extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">Properties</div>
-                <div>
+                <React.Fragment>
                     {section.properties.map((property, i) => (
                         <div key={i} className="mb6">
                             <span className="txt-code txt-bold bg-white mr3 ml-neg3">
@@ -49,8 +49,8 @@ export default class Properties extends React.Component {
                             )}
                         </div>
                     ))}
-                </div>
-            </div>
+                </React.Fragment>
+            </React.Fragment>
         );
     }
 }

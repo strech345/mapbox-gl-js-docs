@@ -6,14 +6,14 @@ export default class MembersList extends React.Component {
     render() {
         const { title, members } = this.props;
         return (
-            <div>
+            <React.Fragment>
                 <div className="py6 mt12 txt-m txt-bold">{title}</div>
                 <div className="mb18">
                     {members.map((member, i) => (
                         <ApiItemMember {...this.props} key={i} {...member} />
                     ))}
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
