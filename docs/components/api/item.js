@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import createFormatters from 'documentation/src/output/util/formatters';
 import LinkerStack from 'documentation/src/output/util/linker_stack';
 import GithubSlugger from 'github-slugger';
-import { highlightJavascript } from '../../components/prism_highlight.js';
+
 import docs from '../api.json'; // eslint-disable-line
 import ApiItemMember from './item-member';
 import Heading from './heading';
@@ -12,6 +12,7 @@ import Parameters from './parameters';
 import Properties from './properties';
 import Returns from './returns';
 import Throws from './throws';
+import Examples from './examples';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -128,17 +129,11 @@ class ApiItem extends React.Component {
                 )}
 
                 {!empty(section.examples) && (
-                    <div>
-                        <div className="py6 mt12 txt-m txt-bold">Example</div>
-                        {section.examples.map((example, i) => (
-                            <div key={i}>
-                                {example.caption && (
-                                    <p>{this.md(example.caption)}</p>
-                                )}
-                                {highlightJavascript(example.description)}
-                            </div>
-                        ))}
-                    </div>
+                    <Examples
+                        formatType={this.formatType}
+                        md={this.md}
+                        section={section}
+                    />
                 )}
 
                 {membersList(section.members.static, 'Static Members')}
