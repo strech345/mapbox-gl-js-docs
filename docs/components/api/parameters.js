@@ -105,7 +105,7 @@ export default class Parameters extends React.Component {
 Parameters.propTypes = {
     section: PropTypes.shape({
         params: PropTypes.array
-    }),
-    formatType: PropTypes.func,
-    md: PropTypes.func
+    }).isRequired,
+    formatType: PropTypes.func.isRequired,
+    md: PropTypes.func.isRequired
 };

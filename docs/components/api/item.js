@@ -8,6 +8,7 @@ import docs from '../api.json'; // eslint-disable-line
 import ApiItemMember from './item-member';
 import IconText from '@mapbox/mr-ui/icon-text';
 import Parameters from './parameters';
+import Properties from './properties';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
@@ -165,71 +166,11 @@ class ApiItem extends React.Component {
                     )}
 
                 {!empty(section.properties) && (
-                    <div>
-                        <div className="py6 mt12 txt-m txt-bold">
-                            Properties
-                        </div>
-                        <div>
-                            {section.properties.map((property, i) => (
-                                <div key={i} className="mb6">
-                                    <span className="txt-code txt-bold bg-white mr3 ml-neg3">
-                                        {property.name}
-                                    </span>
-                                    <code className="color-gray">
-                                        ({this.formatType(property.type)})
-                                    </code>
-                                    {property.default && (
-                                        <span>
-                                            {'('}
-                                            default{' '}
-                                            <code>{property.default}</code>
-                                            {')'}
-                                        </span>
-                                    )}
-                                    {property.description && (
-                                        <span>
-                                            :{' '}
-                                            {this.md(
-                                                property.description,
-                                                true
-                                            )}
-                                        </span>
-                                    )}
-                                    {property.properties && (
-                                        <ul>
-                                            {property.properties.map(
-                                                (property, i) => (
-                                                    <li key={i}>
-                                                        <code>
-                                                            {property.name}
-                                                        </code>{' '}
-                                                        {this.formatType(
-                                                            property.type
-                                                        )}
-                                                        {property.default && (
-                                                            <span>
-                                                                {'('}
-                                                                default{' '}
-                                                                <code>
-                                                                    {
-                                                                        property.default
-                                                                    }
-                                                                </code>
-                                                                {')'}
-                                                            </span>
-                                                        )}
-                                                        {this.md(
-                                                            property.description
-                                                        )}
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <Properties
+                        formatType={this.formatType}
+                        md={this.md}
+                        section={section}
+                    />
                 )}
 
                 {section.returns &&
