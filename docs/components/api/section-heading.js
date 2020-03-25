@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconText from '@mapbox/mr-ui/icon-text';
 
-export default class Heading extends React.Component {
+export default class SectionHeading extends React.Component {
     render() {
         const { section } = this.props;
         return (
@@ -30,7 +30,7 @@ export default class Heading extends React.Component {
     }
 }
 
-Heading.propTypes = {
+SectionHeading.propTypes = {
     section: PropTypes.shape({
         namespace: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,

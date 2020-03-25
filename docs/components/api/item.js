@@ -6,7 +6,7 @@ import GithubSlugger from 'github-slugger';
 import docs from '../api.json'; // eslint-disable-line
 
 import MembersList from './members-list';
-import Heading from './heading';
+import SectionHeading from './section-heading';
 import Augments from './augments';
 import ClassName from './class-name';
 import Parameters from './parameters';
@@ -60,7 +60,7 @@ class ApiItem extends React.Component {
 
         return (
             <section className="prose mb24">
-                {!this.props.nested && <Heading section={section} />}
+                {!this.props.nested && <SectionHeading section={section} />}
 
                 {this.md(section.description)}
 
