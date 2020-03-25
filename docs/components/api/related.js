@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './title';
 
 export default class Related extends React.Component {
     render() {
         const { section, md } = this.props;
         return (
             <React.Fragment>
-                <div className="py6 mt12 txt-m txt-bold">Related</div>
+                <Title>Related</Title>
                 <ul>
                     {section.sees.map((see, i) => (
                         <li key={i}>{md(see, true)}</li>

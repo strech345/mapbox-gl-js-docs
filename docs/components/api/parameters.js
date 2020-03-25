@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './title';
 
 export default class Parameters extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
             <React.Fragment>
-                <div className="py6 mt12 txt-m txt-bold">Parameters</div>
+                <Title>Parameters</Title>
                 <React.Fragment>
                     {section.params.map((param, i) => (
                         <div key={i} className="mb6">

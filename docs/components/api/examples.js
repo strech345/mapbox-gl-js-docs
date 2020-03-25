@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './title';
 import { highlightJavascript } from '../../components/prism_highlight.js';
 
 export default class Examples extends React.Component {
@@ -7,7 +8,7 @@ export default class Examples extends React.Component {
         const { section, md } = this.props;
         return (
             <React.Fragment>
-                <div className="py6 mt12 txt-m txt-bold">Example</div>
+                <Title>Example</Title>
                 {section.examples.map((example, i) => (
                     <div key={i}>
                         {example.caption && <p>{md(example.caption)}</p>}

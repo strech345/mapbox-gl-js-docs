@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './title';
 
 export default class Properties extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return (
             <React.Fragment>
-                <div className="py6 mt12 txt-m txt-bold">Properties</div>
+                <Title>Properties</Title>
                 <React.Fragment>
                     {section.properties.map((property, i) => (
                         <div key={i} className="mb6">
