@@ -7,6 +7,7 @@ import { highlightJavascript } from '../../components/prism_highlight.js';
 import docs from '../api.json'; // eslint-disable-line
 import ApiItemMember from './item-member';
 import Heading from './heading';
+import Augments from './augments';
 import Parameters from './parameters';
 import Properties from './properties';
 import Returns from './returns';
@@ -18,32 +19,6 @@ const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
 });
 
 const formatters = createFormatters(linkerStack.link);
-
-class Augments extends React.Component {
-    render() {
-        const { section } = this.props;
-        return (
-            <p>
-                Extends{' '}
-                {section.augments.map((tag, i) => (
-                    <span
-                        key={i}
-                        dangerouslySetInnerHTML={{
-                            __html: `${formatters.autolink(tag.name)}`
-                        }}
-                    />
-                ))}
-                .
-            </p>
-        );
-    }
-}
-
-Augments.propTypes = {
-    section: PropTypes.shape({
-        augments: PropTypes.array
-    })
-};
 
 class ApiItem extends React.Component {
     md = (ast, inline) => {
@@ -99,7 +74,9 @@ class ApiItem extends React.Component {
 
                 {this.md(section.description)}
 
-                {!empty(section.augments) && <Augments section={section} />}
+                {!empty(section.augments) && (
+                    <Augments formatters={formatters} section={section} />
+                )}
 
                 {section.kind === 'class' &&
                     !section.interface &&
