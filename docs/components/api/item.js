@@ -15,6 +15,32 @@ const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
 
 const formatters = createFormatters(linkerStack.link);
 
+class Augments extends React.Component {
+    render() {
+        const { section } = this.props;
+        return (
+            <p>
+                Extends{' '}
+                {section.augments.map((tag, i) => (
+                    <span
+                        key={i}
+                        dangerouslySetInnerHTML={{
+                            __html: `${formatters.autolink(tag.name)}`
+                        }}
+                    />
+                ))}
+                .
+            </p>
+        );
+    }
+}
+
+Augments.propTypes = {
+    section: PropTypes.shape({
+        augments: PropTypes.array
+    })
+};
+
 class Heading extends React.Component {
     render() {
         const { section } = this.props;
@@ -110,20 +136,7 @@ class ApiItem extends React.Component {
 
                 {this.md(section.description)}
 
-                {!empty(section.augments) && (
-                    <p>
-                        Extends{' '}
-                        {section.augments.map((tag, i) => (
-                            <span
-                                key={i}
-                                dangerouslySetInnerHTML={{
-                                    __html: `${formatters.autolink(tag.name)}`
-                                }}
-                            />
-                        ))}
-                        .
-                    </p>
-                )}
+                {!empty(section.augments) && <Augments section={section} />}
 
                 {section.kind === 'class' &&
                     !section.interface &&
