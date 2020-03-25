@@ -5,9 +5,10 @@ import LinkerStack from 'documentation/src/output/util/linker_stack';
 import GithubSlugger from 'github-slugger';
 import docs from '../api.json'; // eslint-disable-line
 
-import ApiItemMember from './item-member';
+import MembersList from './members-list';
 import Heading from './heading';
 import Augments from './augments';
+import ClassName from './class-name';
 import Parameters from './parameters';
 import Properties from './properties';
 import Returns from './returns';
@@ -55,20 +56,7 @@ class ApiItem extends React.Component {
         const empty = members => !members || members.length === 0;
 
         const membersList = (members, title) =>
-            !empty(members) && (
-                <div>
-                    <div className="py6 mt12 txt-m txt-bold">{title}</div>
-                    <div className="mb18">
-                        {members.map((member, i) => (
-                            <ApiItemMember
-                                {...this.props}
-                                key={i}
-                                {...member}
-                            />
-                        ))}
-                    </div>
-                </div>
-            );
+            !empty(members) && <MembersList title={title} members={members} />;
 
         return (
             <section className="prose mb24">
@@ -84,14 +72,7 @@ class ApiItem extends React.Component {
                     !section.interface &&
                     (!section.constructorComment ||
                         section.constructorComment.access !== 'private') && (
-                        <div
-                            className="txt-code px6 py6 txt-s round bg-gray-faint my18"
-                            dangerouslySetInnerHTML={{
-                                __html: `new ${
-                                    section.name
-                                }${formatters.parameters(section)}`
-                            }}
-                        />
+                        <ClassName formatters={formatters} section={section} />
                     )}
 
                 {!empty(section.params) &&
@@ -147,22 +128,13 @@ class ApiItem extends React.Component {
 
 ApiItem.propTypes = {
     nested: PropTypes.string,
-    namespace: PropTypes.string,
-    name: PropTypes.string,
-    context: PropTypes.object,
     augments: PropTypes.array,
     kind: PropTypes.string,
     constructorComment: PropTypes.shape({
         access: PropTypes.string
     }),
-    version: PropTypes.string,
-    license: PropTypes.string,
-    author: PropTypes.string,
-    copyright: PropTypes.string,
-    location: PropTypes.object,
     description: PropTypes.object,
     interface: PropTypes.string,
-    since: PropTypes.string,
     params: PropTypes.array,
     properties: PropTypes.array,
     returns: PropTypes.array,
