@@ -32,7 +32,7 @@ class ApiItemMember extends React.Component {
                     style={{ marginTop: '-60px' }}
                     id={member.namespace.toLowerCase()}
                 />
-                <div>
+                <React.Fragment>
                     <button
                         className="cursor-pointer toggle-sibling color-blue-on-hover w-full py18"
                         onClick={e => {
@@ -76,7 +76,7 @@ class ApiItemMember extends React.Component {
                             />
                         </div>
                     </button>
-                </div>
+                </React.Fragment>
 
                 {this.state.disclosed && (
                     <div className="toggle-target bg-gray-faint round py18 px18 mb12">

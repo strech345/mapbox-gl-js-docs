@@ -6,11 +6,11 @@ export default class Returns extends React.Component {
     render() {
         const { section, formatType, md } = this.props;
         return section.returns.map((ret, i) => (
-            <div key={i}>
+            <React.Fragment key={i}>
                 <Title>Returns</Title>
                 <code>{formatType(ret.type)}</code>
                 {ret.description && <span>: {md(ret.description, true)}</span>}
-            </div>
+            </React.Fragment>
         ));
     }
 }

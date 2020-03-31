@@ -10,10 +10,10 @@ export default class Examples extends React.Component {
             <React.Fragment>
                 <Title>Example</Title>
                 {section.examples.map((example, i) => (
-                    <div key={i}>
+                    <React.Fragment key={i}>
                         {example.caption && <p>{md(example.caption)}</p>}
                         {highlightJavascript(example.description)}
-                    </div>
+                    </React.Fragment>
                 ))}
             </React.Fragment>
         );

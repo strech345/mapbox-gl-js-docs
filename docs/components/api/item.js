@@ -127,7 +127,7 @@ class ApiItem extends React.Component {
 }
 
 ApiItem.propTypes = {
-    nested: PropTypes.string,
+    nested: PropTypes.bool,
     augments: PropTypes.array,
     kind: PropTypes.string,
     constructorComment: PropTypes.shape({
