@@ -12,7 +12,7 @@ export default class Parameters extends React.Component {
                     {section.params.map((param, i) => (
                         <div key={i} className="mb6">
                             <React.Fragment>
-                                <span className="txt-code bg-transparent ml-neg3 txt-bold">
+                                <span className="txt-mono txt-bold">
                                     {param.name}
                                 </span>
                                 <code className="color-gray">
@@ -59,7 +59,7 @@ export default class Parameters extends React.Component {
                                                 (property, i) => (
                                                     <tr key={i}>
                                                         <td>
-                                                            <span className="txt-code txt-bold txt-break-word bg-white ml-neg3">
+                                                            <span className="txt-mono txt-bold txt-break-word">
                                                                 {property.name}
                                                             </span>
                                                             <br />

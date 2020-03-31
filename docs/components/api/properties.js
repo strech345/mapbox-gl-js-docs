@@ -11,7 +11,7 @@ export default class Properties extends React.Component {
                 <React.Fragment>
                     {section.properties.map((property, i) => (
                         <div key={i} className="mb6">
-                            <span className="txt-code txt-bold bg-white mr3 ml-neg3">
+                            <span className="txt-mono txt-bold mr6">
                                 {property.name}
                             </span>
                             <code className="color-gray">
