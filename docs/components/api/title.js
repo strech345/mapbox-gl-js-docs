@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 
 export default class Title extends React.Component {
     render() {
-        const { children } = this.props;
-        return <div className="py6 mt12 txt-m txt-bold">{children}</div>;
+        return (
+            <h4 className="unprose py6 mt12 txt-m txt-bold">
+                {this.props.children}
+            </h4>
+        );
     }
 }
 
