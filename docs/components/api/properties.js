@@ -58,9 +58,8 @@ export default class Properties extends React.Component {
 
 Properties.propTypes = {
     section: PropTypes.shape({
-        properties: PropTypes.array
+        properties: PropTypes.array.isRequired
     }).isRequired,
-
     formatType: PropTypes.func.isRequired,
     md: PropTypes.func.isRequired
 };

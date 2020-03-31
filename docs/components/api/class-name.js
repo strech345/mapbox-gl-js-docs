@@ -19,7 +19,9 @@ export default class ClassName extends React.Component {
 
 ClassName.propTypes = {
     section: PropTypes.shape({
-        name: PropTypes.string
+        name: PropTypes.string.isRequired
     }).isRequired,
-    formatters: PropTypes.object.isRequired
+    formatters: PropTypes.shape({
+        parameters: PropTypes.func.isRequired
+    }).isRequired
 };

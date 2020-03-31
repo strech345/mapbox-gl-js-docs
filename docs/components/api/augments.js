@@ -23,7 +23,9 @@ export default class Augments extends React.Component {
 
 Augments.propTypes = {
     section: PropTypes.shape({
-        augments: PropTypes.array
+        augments: PropTypes.array.isRequired
     }).isRequired,
-    formatters: PropTypes.object.isRequired
+    formatters: PropTypes.shape({
+        autolink: PropTypes.func.isRequired
+    }).isRequired
 };
