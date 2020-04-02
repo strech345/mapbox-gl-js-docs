@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import createFormatters from 'documentation/src/output/util/formatters';
 import LinkerStack from 'documentation/src/output/util/linker_stack';
 import GithubSlugger from 'github-slugger';
-import { highlightJavascript } from '../components/prism_highlight.js';
-import docs from '../components/api.json'; // eslint-disable-line
-import ApiItemMember from './api-item-member';
+import { highlightJavascript } from '../../components/prism_highlight.js';
+import docs from '../api.json'; // eslint-disable-line
+import ApiItemMember from './item-member';
 import IconText from '@mapbox/mr-ui/icon-text';
 import Feedback from '@mapbox/dr-ui/feedback';
-import constants from '../constants';
+import constants from '../../constants';
 
 const linkerStack = new LinkerStack({}).namespaceResolver(docs, namespace => {
     const slugger = new GithubSlugger();
