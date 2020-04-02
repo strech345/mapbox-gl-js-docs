@@ -12,15 +12,16 @@ import SectionedNavigation from '@mapbox/dr-ui/sectioned-navigation';
 import NavigationAccordion from '@mapbox/dr-ui/navigation-accordion';
 import examples from '@mapbox/batfish/data/examples'; // eslint-disable-line
 import GithubSlugger from 'github-slugger';
-import ApiNavigation from './api-navigation';
 import TopNavTabs from './top-nav-tabs';
 import tags from '../data/tags.json';
-import { overviewNavigation } from '../data/overview-navigation';
-import { styleSpecNavigation } from '../data/style-spec-navigation';
 import plugins from '../data/plugins';
 import { routeToPrefixed } from '@mapbox/batfish/modules/route-to';
 import Search from '@mapbox/dr-ui/search';
 import * as Sentry from '@sentry/browser';
+// NavigationAccordion datasets
+import { apiNavigation } from '../data/api-navigation';
+import { overviewNavigation } from '../data/overview-navigation';
+import { styleSpecNavigation } from '../data/style-spec-navigation';
 
 const redirect = require('../util/style-spec-redirect');
 
@@ -174,16 +175,6 @@ class PageShell extends React.Component {
         };
     }
 
-    apiNavProps() {
-        return {
-            contentType: 'API reference',
-            sidebarContent: <ApiNavigation />,
-            sidebarStackedOnNarrowScreens: false,
-            interactiveClass: 'toggle-sibling',
-            sidebarColSize: 3
-        };
-    }
-
     getSidebarProps(activeTab) {
         if (activeTab === 'overview') {
             return this.accordionNavProps(
@@ -197,7 +188,11 @@ class PageShell extends React.Component {
                 this.getExampleSections(tags)
             );
         } else if (activeTab === 'api') {
-            return this.apiNavProps();
+            return this.accordionNavProps(
+                apiNavigation,
+                'api',
+                'API Reference'
+            );
         } else if (activeTab === 'plugins') {
             return this.sectionedNavProps(
                 activeTab,
