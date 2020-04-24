@@ -14,46 +14,9 @@
         mapboxgl: mapboxgl,
         localGeocoder: coordinatesGeocoder,
         placeholder: 'try: -77.033835, 38.89975 or "740 15th Street, NW"',
-        types: 'address'
+        types: 'address',
+        reverseGeocoder: true
     });
-
-    var coordinatesGeocoder = function(query) {
-        // match anything which looks like a decimal degrees coordinate pair
-        var matches = query.match(
-            /^[ ]*(?:Lat: )+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/
-        );
-
-        if (!matches) {
-            return null;
-        }
-
-        function coordinateFeature(lng, lat) {
-            return {
-                result
-            };
-        }
-
-        var coord1 = Number(matches[1]);
-        var coord2 = Number(matches[2]);
-        var geocodes = [];
-
-        if (coord1 < -90 || coord1 > 90) {
-            // must be lng, lat
-            geocodes.push(coordinateFeature(coord1, coord2));
-        }
-
-        if (coord2 < -90 || coord2 > 90) {
-            // must be lat, lng
-            geocodes.push(coordinateFeature(coord2, coord1));
-        }
-
-        if (geocodes.length === 0) {
-            // lng, lat
-            geocodes.push(coordinateFeature(coord1, coord2));
-        }
-
-        return geocodes;
-    };
 
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 </script>
