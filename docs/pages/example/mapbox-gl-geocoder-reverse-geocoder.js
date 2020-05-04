@@ -1,5 +1,5 @@
 /*---
-title: Search using Coordinates or an Address
+title: Search using coordinates or an address
 description: Use the geocoder to search for addresses or coordinates buildings within your map.
 tags:
   - geocoder
