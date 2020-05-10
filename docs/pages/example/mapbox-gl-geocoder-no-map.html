@@ -24,6 +24,10 @@
         accessToken: mapboxgl.accessToken,
         types: 'country,region,place,postcode,locality,neighborhood'
     });
+    
+    geocoder.on('result', function (e) {
+        console.log(e.result);
+    });
 
     geocoder.addTo('#geocoder');
 </script>
