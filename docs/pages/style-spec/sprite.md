@@ -4,7 +4,8 @@ id: sprite
 description: A style's sprite property supplies a URL template for loading small images to use in rendering background-pattern, fill-pattern, line-pattern,fill-extrusion-pattern and icon-image style properties.
 contentType: specification
 prependJs:
-    - "import ref from '@mapbox/mapbox-gl-style-spec/reference/latest';"
+- "import ref from '@mapbox/mapbox-gl-style-spec/reference/latest';"
+- "import RelatedPage from '@mapbox/dr-ui/related-page';"
 ---
 
 A style's `sprite` property supplies a URL template for loading small images to use in rendering `background-pattern`, `fill-pattern`, `line-pattern`,`fill-extrusion-pattern` and `icon-image` style properties.
@@ -44,4 +45,8 @@ Apart from the required `width`, `height`, `x`, and `y` properties, the followin
 
 Mapbox SDKs will use the value of the `sprite` property in the style to generate the URLs for loading both files. First, for both file types, it will append `@2x` to the URL on high-DPI devices. Second, it will append a file extension: `.json` for the index file, and `.png` for the image file. For example, if you specified `"sprite": "https://example.com/sprite"`, renderers would load `https://example.com/sprite.json` and `https://example.com/sprite.png`, or `https://example.com/sprite@2x.json` and `https://example.com/sprite@2x.png`.
 
-Mapbox Studio uses [pre-built sprites provided by Mapbox](https://github.com/mapbox/mapbox-gl-styles/tree/master/sprites). If you would like, you can upload custom SVG images to build your own sprite. In either case, Mapbox APIs will build and provide the sprite automatically. If you want to build a sprite by hand and self-host the files, you can use [spritezero-cli](https://github.com/mapbox/spritezero-cli), a command line utility that builds Mapbox GL compatible sprite PNG and index files from a directory of SVGs.
+Mapbox Studio uses pre-built sprites provided by Mapbox. If you would like, you can upload custom SVG images to build your own sprite. In either case, Mapbox APIs will build and provide the sprite automatically. If you want to build a sprite by hand and self-host the files, you can use [spritezero-cli](https://github.com/mapbox/spritezero-cli), a command line utility that builds Mapbox GL compatible sprite PNG and index files from a directory of SVGs.
+
+{{<RelatedPage vimeoId="422985324" vimeoThumbnail="./docs/img/videos/how-to-view-all-icons-in-a-sprite.jpg" title="How to view all icons in a sprite" contentType="video">}}
+Learn how to use the Mapbox Styles API to retrieve sprite information associated with a map style.
+{{</RelatedPage>}}
